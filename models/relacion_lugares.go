@@ -7,7 +7,9 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type RelacionLugares struct {
@@ -16,6 +18,8 @@ type RelacionLugares struct {
 	LugarHijo         *Lugar             `orm:"column(lugar_hijo);rel(fk)"`
 	TipoRelacionLugar *TipoRelacionLugar `orm:"column(tipo_relacion_lugar);rel(fk)"`
 	Activo            bool               `orm:"column(activo)"`
+	FechaCreacion     string             `orm:"column(fecha_creacion);null"`
+	FechaModificacion string             `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *RelacionLugares) TableName() string {
@@ -29,6 +33,8 @@ func init() {
 // AddRelacionLugares insert a new RelacionLugares into database and returns
 // last inserted Id on success.
 func AddRelacionLugares(m *RelacionLugares) (id int64, err error) {
+	m.FechaCreacion = time_bogota.TiempoBogotaFormato()
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -128,10 +134,11 @@ func GetAllRelacionLugares(query map[string]string, fields []string, sortby []st
 func UpdateRelacionLugaresById(m *RelacionLugares) (err error) {
 	o := orm.NewOrm()
 	v := RelacionLugares{Id: m.Id}
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Update(m); err == nil {
+		if num, err = o.Update(m, "LugarPadre", "LugarHijo", "TipoRelacionLugar", "Activo", "FechaModificacion"); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}
 	}
@@ -156,7 +163,7 @@ func DeleteRelacionLugares(id int) (err error) {
 // GetRelacionesPadre retrieves padre de un lugar
 func GetRelacionesPadre(id int) (v []RelacionLugares) {
 	o := orm.NewOrm()
-	if _, err := o.Raw(`Select lugar_padre,lugar_hijo from core_new.relacion_lugares 
+	if _, err := o.Raw(`Select lugar_padre,lugar_hijo from ` + beego.AppConfig.String("PGschemas") + `.relacion_lugares 
 		where lugar_hijo=` + strconv.Itoa(id)).QueryRows(&v); err == nil {
 	}
 	return v
@@ -173,7 +180,7 @@ func GetJerarquiaLugarById(id int) (v map[string]interface{}, err error) {
 	o := orm.NewOrm()
 	lugar := &Lugar{Id: id}
 	if err = o.Read(lugar); err == nil {
-		if _, err := o.Raw(`Select lugar_padre,lugar_hijo from core_new.relacion_lugares 
+		if _, err := o.Raw(`Select lugar_padre,lugar_hijo from ` + beego.AppConfig.String("PGschemas") + `.relacion_lugares 
 			where lugar_hijo=` + strconv.Itoa(id)).QueryRows(&relacionesLugares); err == nil {
 			if relacionesLugares == nil { //no tiene padre
 				err := o.Read(lugar.TipoLugar)

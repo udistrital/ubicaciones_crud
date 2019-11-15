@@ -1,21 +1,18 @@
 package main
 
 import (
-	_ "github.com/udistrital/ubicaciones_crud/routers"
-
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/logs"
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/plugins/cors"
 	_ "github.com/lib/pq"
-	"github.com/udistrital/utils_oas/apiStatusLib"
+	"github.com/udistrital/auditoria"
+	_ "github.com/udistrital/ubicaciones_crud/routers"
+	apistatus "github.com/udistrital/utils_oas/apiStatusLib"
+	"github.com/udistrital/utils_oas/customerror"
 )
 
 func init() {
-	err := orm.RegisterDataBase("default", "postgres", "postgres://"+beego.AppConfig.String("PGuser")+":"+beego.AppConfig.String("PGpass")+"@"+beego.AppConfig.String("PGurls")+"/"+beego.AppConfig.String("PGdb")+"?sslmode=disable&search_path="+beego.AppConfig.String("PGschemas")+"")
-	if err != nil {
-
-	}
+	orm.RegisterDataBase("default", "postgres", "postgres://"+beego.AppConfig.String("PGuser")+":"+beego.AppConfig.String("PGpass")+"@"+beego.AppConfig.String("PGurls")+"/"+beego.AppConfig.String("PGdb")+"?sslmode=disable&search_path="+beego.AppConfig.String("PGschemas")+"")
 }
 
 func main() {
@@ -38,16 +35,8 @@ func main() {
 		AllowCredentials: true,
 	}))
 
-	logPath := "{\"filename\":\""
-	logPath += beego.AppConfig.String("logPath")
-	logPath += "\"}"
-	err := logs.SetLogger(logs.AdapterFile, logPath)
-	if err == nil {
-		apistatus.Init()
-		beego.Run()
-	} else {
-		apistatus.Init()
-		beego.Run()
-	}
-
+	apistatus.Init()
+	auditoria.InitMiddleware()
+	beego.ErrorController(&customerror.CustomErrorController{})
+	beego.Run()
 }
