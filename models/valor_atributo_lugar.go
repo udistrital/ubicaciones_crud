@@ -7,13 +7,16 @@ import (
 	"strings"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type ValorAtributoLugar struct {
-	Id            int            `orm:"column(id);pk;auto"`
-	Lugar         *Lugar         `orm:"column(lugar);rel(fk)"`
-	Valor         string         `orm:"column(valor)"`
-	AtributoLugar *AtributoLugar `orm:"column(atributo_lugar);rel(fk)"`
+	Id                int            `orm:"column(id);pk;auto"`
+	Lugar             *Lugar         `orm:"column(lugar);rel(fk)"`
+	Valor             string         `orm:"column(valor)"`
+	AtributoLugar     *AtributoLugar `orm:"column(atributo_lugar);rel(fk)"`
+	FechaCreacion     string         `orm:"column(fecha_creacion);null"`
+	FechaModificacion string         `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *ValorAtributoLugar) TableName() string {
@@ -27,6 +30,8 @@ func init() {
 // AddValorAtributoLugar insert a new ValorAtributoLugar into database and returns
 // last inserted Id on success.
 func AddValorAtributoLugar(m *ValorAtributoLugar) (id int64, err error) {
+	m.FechaCreacion = time_bogota.TiempoBogotaFormato()
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -126,10 +131,11 @@ func GetAllValorAtributoLugar(query map[string]string, fields []string, sortby [
 func UpdateValorAtributoLugarById(m *ValorAtributoLugar) (err error) {
 	o := orm.NewOrm()
 	v := ValorAtributoLugar{Id: m.Id}
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Update(m); err == nil {
+		if num, err = o.Update(m, "Lugar", "Valor", "AtributoLugar", "FechaModificacion"); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}
 	}
