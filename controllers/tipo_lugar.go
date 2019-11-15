@@ -7,7 +7,7 @@ import (
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
-	"github.com/planesticud/ubicaciones_crud/models"
+	"github.com/udistrital/ubicaciones_crud/models"
 )
 
 // TipoLugarController operations for TipoLugar

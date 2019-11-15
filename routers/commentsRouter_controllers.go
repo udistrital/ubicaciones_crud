@@ -7,7 +7,7 @@ import (
 
 func init() {
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:AtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:AtributoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:AtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:AtributoLugarController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -16,7 +16,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:AtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:AtributoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:AtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:AtributoLugarController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -25,7 +25,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:AtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:AtributoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:AtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:AtributoLugarController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -34,7 +34,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:AtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:AtributoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:AtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:AtributoLugarController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -43,7 +43,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:AtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:AtributoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:AtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:AtributoLugarController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -52,7 +52,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:LugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:LugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:LugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:LugarController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -61,7 +61,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:LugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:LugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:LugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:LugarController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -70,7 +70,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:LugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:LugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:LugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:LugarController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -79,7 +79,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:LugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:LugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:LugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:LugarController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -88,7 +88,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:LugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:LugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:LugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:LugarController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -97,7 +97,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:RelacionLugaresController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:RelacionLugaresController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:RelacionLugaresController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:RelacionLugaresController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -106,7 +106,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:RelacionLugaresController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:RelacionLugaresController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:RelacionLugaresController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:RelacionLugaresController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -115,7 +115,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:RelacionLugaresController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:RelacionLugaresController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:RelacionLugaresController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:RelacionLugaresController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -124,7 +124,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:RelacionLugaresController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:RelacionLugaresController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:RelacionLugaresController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:RelacionLugaresController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -133,7 +133,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:RelacionLugaresController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:RelacionLugaresController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:RelacionLugaresController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:RelacionLugaresController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -142,7 +142,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:RelacionLugaresController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:RelacionLugaresController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:RelacionLugaresController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:RelacionLugaresController"],
         beego.ControllerComments{
             Method: "GetJerarquiaLugar",
             Router: `/jerarquia_lugar/:id`,
@@ -151,7 +151,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoLugarController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -160,7 +160,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoLugarController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -169,7 +169,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoLugarController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -178,7 +178,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoLugarController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -187,7 +187,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoLugarController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -196,7 +196,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoRelacionLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoRelacionLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoRelacionLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoRelacionLugarController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -205,7 +205,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoRelacionLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoRelacionLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoRelacionLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoRelacionLugarController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -214,7 +214,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoRelacionLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoRelacionLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoRelacionLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoRelacionLugarController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -223,7 +223,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoRelacionLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoRelacionLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoRelacionLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoRelacionLugarController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -232,7 +232,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoRelacionLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:TipoRelacionLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoRelacionLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:TipoRelacionLugarController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -241,7 +241,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:ValorAtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:ValorAtributoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:ValorAtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:ValorAtributoLugarController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -250,7 +250,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:ValorAtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:ValorAtributoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:ValorAtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:ValorAtributoLugarController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -259,7 +259,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:ValorAtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:ValorAtributoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:ValorAtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:ValorAtributoLugarController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -268,7 +268,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:ValorAtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:ValorAtributoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:ValorAtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:ValorAtributoLugarController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -277,7 +277,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:ValorAtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/planesticud/ubicaciones_crud/controllers:ValorAtributoLugarController"],
+    beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:ValorAtributoLugarController"] = append(beego.GlobalControllerRouter["github.com/udistrital/ubicaciones_crud/controllers:ValorAtributoLugarController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,

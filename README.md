@@ -14,7 +14,7 @@ Go version >= 1.8.
 ## Preparación
 Para usar el API, usar el comando:
 
- - `go get github.com/planesticud/ubicaciones_crud`
+ - `go get github.com/udistrital/ubicaciones_crud`
 
 ## Ejecución
 Definir los valores de las siguientes variables de entorno:
