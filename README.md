@@ -1,6 +1,6 @@
 # ubicaciones_crud
 API de ubicaciones y lugares
-
+/.-./
 Integración con
 
  - `CI`
