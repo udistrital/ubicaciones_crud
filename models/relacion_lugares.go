@@ -13,13 +13,12 @@ import (
 )
 
 type RelacionLugares struct {
-	Id                int                `orm:"column(id);pk;auto"`
-	LugarPadre        *Lugar             `orm:"column(lugar_padre);rel(fk)"`
-	LugarHijo         *Lugar             `orm:"column(lugar_hijo);rel(fk)"`
-	TipoRelacionLugar *TipoRelacionLugar `orm:"column(tipo_relacion_lugar);rel(fk)"`
-	Activo            bool               `orm:"column(activo)"`
-	FechaCreacion     string             `orm:"column(fecha_creacion);null"`
-	FechaModificacion string             `orm:"column(fecha_modificacion);null"`
+	Id                  int                `orm:"column(id);pk;auto"`
+	LugarPadreId        *Lugar             `orm:"column(lugar_padre_id);rel(fk)"`
+	LugarHijoId         *Lugar             `orm:"column(lugar_hijo_id);rel(fk)"`
+	Activo              bool               `orm:"column(activo)"`
+	FechaCreacion       string             `orm:"column(fecha_creacion);null"`
+	FechaModificacion   string             `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *RelacionLugares) TableName() string {
@@ -183,29 +182,29 @@ func GetJerarquiaLugarById(id int) (v map[string]interface{}, err error) {
 		if _, err := o.Raw(`Select lugar_padre,lugar_hijo from ` + beego.AppConfig.String("PGschemas") + `.relacion_lugares 
 			where lugar_hijo=` + strconv.Itoa(id)).QueryRows(&relacionesLugares); err == nil {
 			if relacionesLugares == nil { //no tiene padre
-				err := o.Read(lugar.TipoLugar)
+				err := o.Read(lugar.TipoLugarId)
 				if err == nil {
-					resultado[lugar.TipoLugar.Nombre] = lugar
+					resultado[lugar.TipoLugarId.Nombre] = lugar
 				}
 
 			} else {
 				for relacionesLugares != nil {
-					lugar := Lugar{Id: relacionesLugares[0].LugarHijo.Id}
+					lugar := Lugar{Id: relacionesLugares[0].LugarHijoId.Id}
 					err = o.Read(&lugar)
-					err := o.Read(lugar.TipoLugar)
+					err := o.Read(lugar.TipoLugarId)
 					if err == nil {
-						resultado[lugar.TipoLugar.Nombre] = lugar
+						resultado[lugar.TipoLugarId.Nombre] = lugar
 					}
 
-					padre := relacionesLugares[0].LugarPadre.Id
-					relacionesLugares = GetRelacionesPadre(relacionesLugares[0].LugarPadre.Id)
+					padre := relacionesLugares[0].LugarPadreId.Id
+					relacionesLugares = GetRelacionesPadre(relacionesLugares[0].LugarPadreId.Id)
 
 					if relacionesLugares == nil {
 						lugar := Lugar{Id: padre}
 						err = o.Read(&lugar)
-						err := o.Read(lugar.TipoLugar)
+						err := o.Read(lugar.TipoLugarId)
 						if err == nil {
-							resultado[lugar.TipoLugar.Nombre] = lugar
+							resultado[lugar.TipoLugarId.Nombre] = lugar
 						}
 					}
 				}

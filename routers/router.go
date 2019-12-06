@@ -34,12 +34,6 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/tipo_relacion_lugar",
-			beego.NSInclude(
-				&controllers.TipoRelacionLugarController{},
-			),
-		),
-
 		beego.NSNamespace("/lugar",
 			beego.NSInclude(
 				&controllers.LugarController{},
