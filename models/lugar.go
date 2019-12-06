@@ -13,7 +13,7 @@ import (
 type Lugar struct {
 	Id                int        `orm:"column(id);pk;auto"`
 	Nombre            string     `orm:"column(nombre)"`
-	TipoLugar         *TipoLugar `orm:"column(tipo_lugar);rel(fk)"`
+	TipoLugarId       *TipoLugar `orm:"column(tipo_lugar_id);rel(fk)"`
 	Activo            bool       `orm:"column(activo)"`
 	FechaCreacion     string     `orm:"column(fecha_creacion);null"`
 	FechaModificacion string     `orm:"column(fecha_modificacion);null"`
