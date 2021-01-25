@@ -14,7 +14,7 @@ Go version >= 1.8.
 ## Preparación
 Para usar el API, usar el comando:
 
- - `go get github.com/planesticud/ubicaciones_crud`
+ - `go get github.com/udistrital/ubicaciones_crud`
 
 ## Ejecución
 Definir los valores de las siguientes variables de entorno:
@@ -30,4 +30,4 @@ Definir los valores de las siguientes variables de entorno:
 UBICACIONES_HTTP_PORT=8085 UBICACIONES_CRUD__PGUSER=user UBICACIONES_CRUD__PGPASS=password UBICACIONES_CRUD__PGURLS=localhost UBICACIONES_CRUD__PGDB=bd UBICACIONES_CRUD__SCHEMA=schema_new bee run
 
 ## Modelo BD
-![image](https://github.com/planesticud/ubicaciones_crud/blob/develop/modelo_ubicaciones_crud.png).
+![image](https://github.com/udistrital/ubicaciones_crud/blob/develop/modelo_ubicaciones_crud.png).
