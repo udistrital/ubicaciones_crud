@@ -7,13 +7,16 @@ import (
 	"strings"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type Lugar struct {
-	Id        int        `orm:"column(id);pk;auto"`
-	Nombre    string     `orm:"column(nombre)"`
-	TipoLugar *TipoLugar `orm:"column(tipo_lugar);rel(fk)"`
-	Activo    bool       `orm:"column(activo)"`
+	Id                int        `orm:"column(id);pk;auto"`
+	Nombre            string     `orm:"column(nombre)"`
+	TipoLugar         *TipoLugar `orm:"column(tipo_lugar);rel(fk)"`
+	Activo            bool       `orm:"column(activo)"`
+	FechaCreacion     string     `orm:"column(fecha_creacion);null"`
+	FechaModificacion string     `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *Lugar) TableName() string {
@@ -27,6 +30,8 @@ func init() {
 // AddLugar insert a new Lugar into database and returns
 // last inserted Id on success.
 func AddLugar(m *Lugar) (id int64, err error) {
+	m.FechaCreacion = time_bogota.TiempoBogotaFormato()
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -126,10 +131,11 @@ func GetAllLugar(query map[string]string, fields []string, sortby []string, orde
 func UpdateLugarById(m *Lugar) (err error) {
 	o := orm.NewOrm()
 	v := Lugar{Id: m.Id}
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Update(m); err == nil {
+		if num, err = o.Update(m, "Nombre", "TipoLugar", "Activo", "FechaModificacion"); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}
 	}
