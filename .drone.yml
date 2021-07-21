@@ -4,24 +4,24 @@ workspace:
   when:
       branch:
       - develop
-      - release
+      - release/*
       - master
 
 kind: pipeline
 name: oas_api_ci
 
 steps:
-# - name: check_readme
-#   image: jjvargass/qa_develoment:latest
-#   commands:
-#   - python /app/check_readme.py
-#   when:
-#     branch:
-#     - develop
-#     - feature/*
-#     - release
-#     event:
-#     - push
+- name: check_readme
+  image: jjvargass/qa_develoment:latest
+  commands:
+  - python /app/check_readme.py
+  when:
+    branch:
+    - develop
+    - feature/*
+    - release/*
+    event:
+    - push
 
 - name: check_branch
   image: jjvargass/qa_develoment:latest
@@ -31,7 +31,7 @@ steps:
     branch:
     - develop
     - feature/*
-    - release
+    - release/*
     event:
     - push
 
@@ -43,7 +43,7 @@ steps:
     branch:
     - develop
     - feature/*
-    - release
+    - release/*
     event:
     - push
 
@@ -58,7 +58,6 @@ steps:
     - develop
     - release/*
     - feature/*
-    - release
     - master
     event:
     - push
@@ -79,8 +78,7 @@ steps:
   when:
     branch:
     - develop
-    - feature/*
-    - release
+    - release/*
     - master
     event:
     - push
@@ -93,48 +91,47 @@ steps:
 #     sonar_token:
 #       from_secret: SONAR_TOKEN
 
-# - name: beego_migrate
-#   image: golang:1.14
-#   environment:
-#     PG_MIGRATION_USER:
-#       from_secret: PG_MIGRATION_USER
-#     PG_MIGRATION_PASS:
-#       from_secret: PG_MIGRATION_PASS
-#     PG_MIGRATION_URL:
-#       from_secret: PG_MIGRATION_URL
-#     PG_MIGRATION_DBNAME:
-#       from_secret: PG_MIGRATION_DBNAME
-#   commands:
-#   - go get -t
-#   - go get -u github.com/beego/bee
-#   - bee migrate -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
-#   when:
-#     branch:
-#     - release
-#     event:
-#     - push
+- name: beego_migrate
+  image: golang:1.14
+  environment:
+    PG_MIGRATION_USER:
+      from_secret: PG_MIGRATION_USER
+    PG_MIGRATION_PASS:
+      from_secret: PG_MIGRATION_PASS
+    PG_MIGRATION_URL:
+      from_secret: PG_MIGRATION_URL
+    PG_MIGRATION_DBNAME:
+      from_secret: PG_MIGRATION_DBNAME
+  commands:
+  - go get -t
+  - go get -u github.com/beego/bee
+  - bee migrate -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
+  when:
+    branch:
+    - release/*
+    event:
+    - push
 
-# - name: beego_rollback
-#   image: golang:1.14
-#   environment:
-#     PG_MIGRATION_USER:
-#       from_secret: PG_MIGRATION_USER
-#     PG_MIGRATION_PASS:
-#       from_secret: PG_MIGRATION_PASS
-#     PG_MIGRATION_URL:
-#       from_secret: PG_MIGRATION_URL
-#     PG_MIGRATION_DBNAME:
-#       from_secret: PG_MIGRATION_DBNAME
-#   commands:
-#   - go get -t
-#   - go get -u github.com/beego/bee
-#   - bee migrate rollback -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
-#   when:
-#     branch:
-#     - release/*
-#     - release
-#     status:
-#     - failure
+- name: beego_rollback
+  image: golang:1.14
+  environment:
+    PG_MIGRATION_USER:
+      from_secret: PG_MIGRATION_USER
+    PG_MIGRATION_PASS:
+      from_secret: PG_MIGRATION_PASS
+    PG_MIGRATION_URL:
+      from_secret: PG_MIGRATION_URL
+    PG_MIGRATION_DBNAME:
+      from_secret: PG_MIGRATION_DBNAME
+  commands:
+  - go get -t
+  - go get -u github.com/beego/bee
+  - bee migrate rollback -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
+  when:
+    branch:
+    - release/*
+    status:
+    - failure
 
 - name: publish_to_ecr_release
   image: plugins/ecr
