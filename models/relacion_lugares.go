@@ -180,8 +180,8 @@ func GetJerarquiaLugarById(id int) (v map[string]interface{}, err error) {
 	o := orm.NewOrm()
 	lugar := &Lugar{Id: id}
 	if err = o.Read(lugar); err == nil {
-		if _, err := o.Raw(`Select lugar_padre,lugar_hijo from ` + beego.AppConfig.String("PGschemas") + `.relacion_lugares 
-			where lugar_hijo=` + strconv.Itoa(id)).QueryRows(&relacionesLugares); err == nil {
+		if _, err := o.Raw(`Select lugar_padre_id,lugar_hijo_id from ` + beego.AppConfig.String("PGschemas") + `.relacion_lugares 
+			where lugar_hijo_id=` + strconv.Itoa(id)).QueryRows(&relacionesLugares); err == nil {
 			if relacionesLugares == nil { //no tiene padre
 				o.Read(lugar.TipoLugar)
 				resultado[lugar.TipoLugar.Nombre] = lugar
