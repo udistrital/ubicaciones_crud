@@ -12,7 +12,7 @@ import (
 
 type ValorAtributoLugar struct {
 	Id                int            `orm:"column(id);pk;auto"`
-	Lugar             *Lugar         `orm:"column(lugar);rel(fk)"`
+	Lugar             *Lugar         `orm:"column(lugar_id);rel(fk)"`
 	Valor             string         `orm:"column(valor)"`
 	AtributoLugar     *AtributoLugar `orm:"column(atributo_lugar);rel(fk)"`
 	FechaCreacion     string         `orm:"column(fecha_creacion);null"`

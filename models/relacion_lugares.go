@@ -14,8 +14,8 @@ import (
 
 type RelacionLugares struct {
 	Id                int                `orm:"column(id);pk;auto"`
-	LugarPadre        *Lugar             `orm:"column(lugar_padre);rel(fk)"`
-	LugarHijo         *Lugar             `orm:"column(lugar_hijo);rel(fk)"`
+	LugarPadre        *Lugar             `orm:"column(lugar_padre_id);rel(fk)"`
+	LugarHijo         *Lugar             `orm:"column(lugar_hijo_id);rel(fk)"`
 	TipoRelacionLugar *TipoRelacionLugar `orm:"column(tipo_relacion_lugar);rel(fk)"`
 	Activo            bool               `orm:"column(activo)"`
 	FechaCreacion     string             `orm:"column(fecha_creacion);null"`
