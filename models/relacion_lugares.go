@@ -13,13 +13,13 @@ import (
 )
 
 type RelacionLugares struct {
-	Id                int                `orm:"column(id);pk;auto"`
-	LugarPadre        *Lugar             `orm:"column(lugar_padre);rel(fk)"`
-	LugarHijo         *Lugar             `orm:"column(lugar_hijo);rel(fk)"`
-	TipoRelacionLugar *TipoRelacionLugar `orm:"column(tipo_relacion_lugar);rel(fk)"`
-	Activo            bool               `orm:"column(activo)"`
-	FechaCreacion     string             `orm:"column(fecha_creacion);null"`
-	FechaModificacion string             `orm:"column(fecha_modificacion);null"`
+	Id                  int                `orm:"column(id);pk;auto"`
+	LugarPadreId        *Lugar             `orm:"column(lugar_padre_id);rel(fk)"`
+	LugarHijoId         *Lugar             `orm:"column(lugar_hijo_id);rel(fk)"`
+	TipoRelacionLugarId *TipoRelacionLugar `orm:"column(tipo_relacion_lugar_id);rel(fk)"`
+	Activo              bool               `orm:"column(activo)"`
+	FechaCreacion       string             `orm:"column(fecha_creacion);null"`
+	FechaModificacion   string             `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *RelacionLugares) TableName() string {
@@ -163,8 +163,8 @@ func DeleteRelacionLugares(id int) (err error) {
 // GetRelacionesPadre retrieves padre de un lugar
 func GetRelacionesPadre(id int) (v []RelacionLugares) {
 	o := orm.NewOrm()
-	if _, err := o.Raw(`Select lugar_padre,lugar_hijo from ` + beego.AppConfig.String("PGschemas") + `.relacion_lugares 
-		where lugar_hijo=` + strconv.Itoa(id)).QueryRows(&v); err == nil {
+	if _, err := o.Raw(`Select lugar_padre_id,lugar_hijo_id from ` + beego.AppConfig.String("PGschemas") + `.relacion_lugares 
+		where lugar_hijo_id=` + strconv.Itoa(id)).QueryRows(&v); err == nil {
 	}
 	return v
 }
@@ -180,25 +180,25 @@ func GetJerarquiaLugarById(id int) (v map[string]interface{}, err error) {
 	o := orm.NewOrm()
 	lugar := &Lugar{Id: id}
 	if err = o.Read(lugar); err == nil {
-		if _, err := o.Raw(`Select lugar_padre,lugar_hijo from ` + beego.AppConfig.String("PGschemas") + `.relacion_lugares 
-			where lugar_hijo=` + strconv.Itoa(id)).QueryRows(&relacionesLugares); err == nil {
+		if _, err := o.Raw(`Select lugar_padre_id,lugar_hijo_id from ` + beego.AppConfig.String("PGschemas") + `.relacion_lugares 
+			where lugar_hijo_id=` + strconv.Itoa(id)).QueryRows(&relacionesLugares); err == nil {
 			if relacionesLugares == nil { //no tiene padre
-				o.Read(lugar.TipoLugar)
-				resultado[lugar.TipoLugar.Nombre] = lugar
+				o.Read(lugar.TipoLugarId)
+				resultado[lugar.TipoLugarId.Nombre] = lugar
 			} else {
 				for relacionesLugares != nil {
-					lugar := Lugar{Id: relacionesLugares[0].LugarHijo.Id}
+					lugar := Lugar{Id: relacionesLugares[0].LugarHijoId.Id}
 					err = o.Read(&lugar)
-					o.Read(lugar.TipoLugar)
-					resultado[lugar.TipoLugar.Nombre] = lugar
-					padre := relacionesLugares[0].LugarPadre.Id
-					relacionesLugares = GetRelacionesPadre(relacionesLugares[0].LugarPadre.Id)
+					o.Read(lugar.TipoLugarId)
+					resultado[lugar.TipoLugarId.Nombre] = lugar
+					padre := relacionesLugares[0].LugarPadreId.Id
+					relacionesLugares = GetRelacionesPadre(relacionesLugares[0].LugarPadreId.Id)
 
 					if relacionesLugares == nil {
 						lugar := Lugar{Id: padre}
 						err = o.Read(&lugar)
-						o.Read(lugar.TipoLugar)
-						resultado[lugar.TipoLugar.Nombre] = lugar
+						o.Read(lugar.TipoLugarId)
+						resultado[lugar.TipoLugarId.Nombre] = lugar
 					}
 				}
 			}
